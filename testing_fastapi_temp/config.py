@@ -5,11 +5,11 @@ from dynaconf import Dynaconf
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 settings = Dynaconf(
-    envvar_prefix="project_name",
+    envvar_prefix="testing_fastapi_temp",
     preload=[os.path.join(HERE, "default.toml")],
     settings_files=["settings.toml", ".secrets.toml"],
     environments=["development", "production", "testing"],
-    env_switcher="project_name_env",
+    env_switcher="testing_fastapi_temp_env",
     load_dotenv=False,
 )
 
@@ -18,7 +18,7 @@ settings = Dynaconf(
 # How to use this application settings
 
 ```
-from project_name.config import settings
+from testing_fastapi_temp.config import settings
 ```
 
 ## Acessing variables
@@ -45,15 +45,15 @@ KEY=value
 
 ### As environment variables
 ```
-export PROJECT_NAME_KEY=value
-export PROJECT_NAME_KEY="@int 42"
-export PROJECT_NAME_KEY="@jinja {{ this.db.uri }}"
-export PROJECT_NAME_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
+export testing_fastapi_temp_KEY=value
+export testing_fastapi_temp_KEY="@int 42"
+export testing_fastapi_temp_KEY="@jinja {{ this.db.uri }}"
+export testing_fastapi_temp_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
 ```
 
 ### Switching environments
 ```
-PROJECT_NAME_ENV=production project_name run
+testing_fastapi_temp_ENV=production testing_fastapi_temp run
 ```
 
 Read more on https://dynaconf.com
